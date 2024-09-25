@@ -9,13 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Présentation de notre site</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+
         h1 {
             margin: 0;
         }

@@ -1,10 +1,9 @@
 <?php 
-require_once 'db.php'; // Assurez-vous d'inclure votre fichier de connexion à la base de données
+session_start();
+require_once 'db.php';
 include 'veriflogin.php';
 
 $current_page = basename($_SERVER['PHP_SELF']);
-
-// Requête pour récupérer le nombre de tickets en statut 0
 $ticket_count = 0;
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM probleme WHERE statut = 0");
@@ -19,34 +18,32 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     $stmt->execute();
     $reservation_count = $stmt->fetchColumn(); 
 }
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+    header('Location: login.php'); // Rediriger vers la page de connexion si non connecté
+    exit;
+}
 
+// Récupérer le nom d'utilisateur de la session
+$username = $_SESSION['username']; // Assurez-vous que le nom d'utilisateur est stocké dans la session
+
+// Requête pour récupérer les réservations de l'utilisateur
+$stmt = $pdo->prepare("SELECT * FROM reservations WHERE origine = :origine AND statut IN (1, 2)");
+$stmt->execute(['origine' => $username]);
+$reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon site</title>
-    <link rel="stylesheet" type="text/css" href="/Workshop/Styles/notif.css">
-    <link rel="stylesheet" type="text/css" href="/Workshop/Styles/styles.css">
+    <title>Mes Réservations</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Ajout de style pour le bouton et la tooltip */
-        .tooltip {
-            display: none; /* Caché par défaut */
-            position: absolute;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            z-index: 1;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="Styles/notif.css">
 </head>
 <body>
-<div>
-<div class="navbar" style="text-align: center;" id="navbar">
+    <div class="navbar" id="navbar">
     <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
     <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
     <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
@@ -69,23 +66,39 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     <?php else: ?>
         <a class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>" href="login.php">Se connecter</a>
     <?php endif; ?>
-</div>
     </div>
-<script src="/Workshop/JS/modal.js"></script>
-<script src="/Workshop/JS/script.js"></script>
-<script>
-    const tooltip = document.getElementById('reservationStatusTooltip');
-    const button = document.getElementById('reservationStatusButton');
 
-    button.addEventListener('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
-        // Positionner la tooltip juste en dessous du bouton
-        const rect = button.getBoundingClientRect();
-        tooltip.style.top = rect.bottom + window.scrollY + 'px'; // Position verticale
-        tooltip.style.left = rect.left + window.scrollX + 'px'; // Position horizontale
-        tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block'; // Afficher ou cacher la tooltip
-    });
+    <h1>Mes Réservations</h1>
 
-</script>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Salle</th>
+                <th>Date</th>
+                <th>Heure de début</th>
+                <th>Durée</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (count($reservations) > 0): ?>
+                <?php foreach ($reservations as $reservation): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($reservation['id']); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['numero_salle']); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['date_reservation']); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['heure_reservation']); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['duree']); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['statut'] == 1 ? 'Validée' : 'En Attente'); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="6">Aucune réservation trouvée.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
 </body>
 </html>

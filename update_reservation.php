@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute(['id' => $id]);
         $_SESSION['message'] = "Réservation acceptée.";
     } elseif ($action == 'refuse') {
-        // Logique pour refuser la réservation (suppression)
-        $sql = "DELETE FROM reservations WHERE id = :id";
+        // Logique pour refuser la réservation (changement de statut)
+        $sql = "UPDATE reservations SET statut = 2 WHERE id = :id"; // 2 pour refusé
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
-        $_SESSION['message'] = "Réservation refusée et supprimée.";
+        $_SESSION['message'] = "Réservation refusée.";
     }
 
     // Rediriger vers la page de liste des réservations
