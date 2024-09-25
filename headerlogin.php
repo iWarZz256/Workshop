@@ -1,5 +1,6 @@
 <?php 
 require_once 'db.php'; // Assurez-vous d'inclure votre fichier de connexion à la base de données
+include 'veriflogin.php';
 
 $current_page = basename($_SERVER['PHP_SELF']);
 

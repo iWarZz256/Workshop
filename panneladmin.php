@@ -2,6 +2,7 @@
 session_start();
 include 'headerlogin.php'; 
 require_once 'db.php';
+include 'veriflogin.php'; 
 
 // Vérifier les alertes pour les tickets
 $ticket_alerts = $pdo->query("SELECT COUNT(*) FROM probleme WHERE statut = 0")->fetchColumn();

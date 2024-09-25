@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../db.php';
+include '../veriflogin.php';
 
 // Vérification que la requête est bien en POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

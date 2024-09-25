@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once '../db.php';
+include '../veriflogin.php';
 
 $current_page = basename($_SERVER['PHP_SELF']);
 

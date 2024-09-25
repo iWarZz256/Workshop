@@ -2,6 +2,7 @@
 session_start();
 require_once 'db.php';
 include 'headerlogin.php';
+include 'veriflogin.php'; 
 
 // Récupérer les utilisateurs
 $sql = "SELECT id, username, nom, prenom, ecole, admin FROM compte ORDER BY nom ASC"; // Ajoutez 'admin' ici

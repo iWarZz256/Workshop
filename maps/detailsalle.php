@@ -2,6 +2,7 @@
 session_start();
 require_once '../db.php';
 include '../headerlogin.php';
+include '../veriflogin.php';
 
 // Vérifier si le numéro de salle est passé en paramètre
 if (isset($_GET['numero'])) {

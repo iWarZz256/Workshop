@@ -2,6 +2,7 @@
 session_start();
 require_once 'db.php';
 include 'headerlogin.php';
+include 'veriflogin.php'; 
 
 // Récupérer les réservations
 $sql = "SELECT r.id, r.origine, r.numero_salle, r.date_reservation, r.heure_reservation, r.heure_reservation_fin, r.motif, r.statut, s.numero AS salle_numero, s.etage 
