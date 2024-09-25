@@ -1,5 +1,5 @@
 <?php
-session_start(); // Démarrer la session
+
 
 // Vérification si l'utilisateur est connecté
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {

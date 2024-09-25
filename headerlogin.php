@@ -26,7 +26,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon site</title>
-    <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="/Workshop/Styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -54,7 +54,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     <?php endif; ?>
 </div>
 
-<script src="JS/modal.js"></script>
-<script src="JS/script.js"></script>
+<script src="/Workshop/JS/modal.js"></script>
+<script src="/Workshop/JS/script.js"></script>
 </body>
 </html>

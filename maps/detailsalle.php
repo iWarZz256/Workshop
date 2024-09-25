@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Calculer l'heure de fin (1 heure plus tard)
         $date_heure_reservation_fin = clone $date_heure_reservation;
-        $date_heure_reservation_fin->modify('+1 hour');
+        $date_heure_reservation_fin->modify('+30 minutes');
 
         // Vérifier si l'heure est déjà réservée
         $stmt_check = $pdo->prepare("SELECT COUNT(*) FROM reservations WHERE numero_salle = :salle_numero AND date_reservation = :date_reservation AND heure_reservation = :heure_reservation");
@@ -167,7 +167,7 @@ function closeModal() {
 
 <div class="mastersalle">
 <div class="salle-details">
-    <h1>Détails de la Salle</h1>
+    <h1>Détail de la Salle</h1>
     <h2>Salle numéro : <?php echo htmlspecialchars($salle['numero']); ?></h2>
     <p><strong>Etage :</strong> <?php echo htmlspecialchars($salle['etage']); ?></p>
     <p><strong>Capacité :</strong> <?php echo htmlspecialchars($salle['capacite']); ?> places</p>
@@ -196,22 +196,38 @@ function closeModal() {
         <?php
         // Générer les heures disponibles (par exemple, de 9h à 18h)
         for ($i = 9; $i <= 18; $i++) {
-    $heure = str_pad($i, 2, '0', STR_PAD_LEFT) . ':00';
-    // Vérifier si l'heure est déjà réservée
-    $est_reserve = false;
-    foreach ($reservations as $reservation) {
-        if ($reservation['date_reservation'] == $date && $reservation['heure_reservation'] == $heure) {
-            // Permettre la réservation si le statut est "refusé" (statut 2)
-            if ($reservation['statut'] != 2) {
-                $est_reserve = true;
+            // Générer l'heure à 00 minutes
+            $heure_debut = str_pad($i, 2, '0', STR_PAD_LEFT) . ':00';
+            // Vérifier si l'heure de début est déjà réservée
+            $est_reserve = false;
+            foreach ($reservations as $reservation) {
+                if ($reservation['date_reservation'] == $date && $reservation['heure_reservation'] == $heure_debut) {
+                    if ($reservation['statut'] != 2) {
+                        $est_reserve = true;
+                    }
+                    break;
+                }
             }
-            break;
+            if (!$est_reserve) {
+                echo "<option value=\"$heure_debut\">$heure_debut</option>";
+            }
+        
+            // Générer l'heure à 30 minutes
+            $heure_fin = str_pad($i, 2, '0', STR_PAD_LEFT) . ':30';
+            // Vérifier si l'heure de fin est déjà réservée
+            $est_reserve = false;
+            foreach ($reservations as $reservation) {
+                if ($reservation['date_reservation'] == $date && $reservation['heure_reservation'] == $heure_fin) {
+                    if ($reservation['statut'] != 2) {
+                        $est_reserve = true;
+                    }
+                    break;
+                }
+            }
+            if (!$est_reserve) {
+                echo "<option value=\"$heure_fin\">$heure_fin</option>";
+            }
         }
-    }
-    if (!$est_reserve) {
-        echo "<option value=\"$heure\">$heure</option>";
-    }
-}
         ?>
     </select>
 
@@ -256,8 +272,8 @@ function closeModal() {
 </td>
 
 
-                    <td><?php echo htmlspecialchars($reservation['heure_reservation']); ?></td>
-                    <td><?php echo htmlspecialchars($reservation['heure_reservation_fin']); ?></td>
+<td><?php echo htmlspecialchars(date('H:i', strtotime($reservation['heure_reservation']))); ?></td>
+<td><?php echo htmlspecialchars(date('H:i', strtotime($reservation['heure_reservation_fin']))); ?></td>
                     <td><?php echo htmlspecialchars($reservation['origine']); ?></td>
                     <td class="<?php 
                         $statusText = 'Inconnu'; 
