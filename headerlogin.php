@@ -1,6 +1,5 @@
 <?php 
-
-include 'db.php'; // Assurez-vous d'inclure votre fichier de connexion à la base de données
+require_once 'db.php'; // Assurez-vous d'inclure votre fichier de connexion à la base de données
 
 $current_page = basename($_SERVER['PHP_SELF']);
 

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include '../db.php';
+require_once '../db.php';
 include '../headerlogin.php';
 
 // Vérifier si le numéro de salle est passé en paramètre

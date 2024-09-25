@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include 'db.php';
+require_once 'db.php';
 include 'headerlogin.php';
 
 // Récupérer les utilisateurs

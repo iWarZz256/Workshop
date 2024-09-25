@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../db.php';
+require_once '../db.php';
 
 // Vérification que la requête est bien en POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 include "headerlogin.php";
-include "db.php";
+require_once 'db.php';
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header('Location: login.php'); 
