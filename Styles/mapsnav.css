@@ -5,7 +5,6 @@
             align-items: center; 
             overflow: hidden;
             margin-top: 80px;
-            width: 800px;
             margin: 0 auto;
             border-radius: 100px;
             height: 40px;
@@ -65,4 +64,10 @@
             background-color: #04AA6D;
             color: white;
             border-radius: 50px;
+}
+#navbar1 {
+    width: 650px;
+}
+#navbar2 {
+    width: 800px;
 }

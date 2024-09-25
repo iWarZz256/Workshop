@@ -31,7 +31,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 <body>
 
 
-<div class="navbar" style="text-align: center;margin-top: 20px;">
+<div class="navbar" style="text-align: center;margin-top: 20px;" id="navbar">
     <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
     <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
     <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>

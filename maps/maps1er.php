@@ -33,10 +33,12 @@ $salles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Carte du rez-de-chaussée</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css">
     <link rel="stylesheet" type="text/css" href="../Styles/mapsnav.css">
 </head>
 <body>
-    <div class="navbar" style="text-align: center;">
+    <div class="navbar" style="text-align: center;" id="navbar2">
     <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
     <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'maps1er.php' || $current_page == 'maps2eme.php' || $current_page == 'maps3eme.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
     <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
@@ -57,7 +59,7 @@ $salles = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>" href="login.php">Se connecter</a>
     <?php endif; ?>
 </div>
- <div class="navbar-etage" style="text-align: center;">
+ <div class="navbar" style="text-align: center;" id="navbar1">
         <nav>
             <a class="<?php echo $current_page == 'mapsRDC.php' ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Rez-de-chaussée</a>
             
