@@ -1,0 +1,56 @@
+.room-container {
+    position: relative; /* Nécessaire pour le positionnement de l'infobulle */
+    display: inline-block; /* Pour que les salles s'affichent côte à côte */
+}
+
+.room-number {
+    display: inline-block; /* Permet d'afficher les éléments sur la même ligne sans prendre toute la largeur */
+    margin: 5px; /* Ajoute un peu d'espace entre les numéros */
+    padding: 10px; /* Ajoute de l'espace autour du texte */
+    border: 1px solid #ccc; /* Optionnel : Ajoute une bordure */
+    cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+    background-color: #00d3ff; /* Optionnel : Couleur de fond */
+    transition: background-color 0.3s; /* Transition pour un effet de survol */
+    position: absolute;
+}
+
+.room-number:hover {
+    background-color: #e0e0e0; /* Change la couleur de fond au survol */
+}
+
+
+.modal {
+    display: none; /* Masqué par défaut */
+    position: fixed; /* Reste en place */
+    z-index: 1000; /* Au-dessus des autres éléments */
+    left: 0;
+    top: 0;
+    width: 100%; /* Prend toute la largeur */
+    height: 100%; /* Prend toute la hauteur */
+    overflow: auto; /* Ajoute un défilement si nécessaire */
+    background-color: rgb(0,0,0); /* Couleur de fond */
+    background-color: rgba(0,0,0,0.4); /* Fond noir transparent */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% de marge du haut et auto de chaque côté */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largeur de 80% */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
