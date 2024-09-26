@@ -69,7 +69,7 @@
     </section>
 
     <section class="section-right">
-        <h2>Nos Services</h2>
+        <h2>Nos services</h2>
         <ul>
             <li>Service 1: Possibilités de réservation de salles.</li>
             <li>Service 2: Possibilités de reporter un problème dans une salle.</li>

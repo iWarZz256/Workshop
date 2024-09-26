@@ -2,6 +2,7 @@
 session_start();
 require_once 'db.php';
 include 'veriflogin.php';
+include 'headerlogin.php';
 
 $current_page = basename($_SERVER['PHP_SELF']);
 $ticket_count = 0;
@@ -43,36 +44,8 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" type="text/css" href="Styles/notif.css">
 </head>
 <body>
-    <div style="display: flex;">
-    <img src="images/epsi.png" style="width:100px;margin-top:-19px">
-    <div class="navbar" id="navbar">
-        
-    <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
-    <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
-    <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
-    
-    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
-        <a class="<?php echo $current_page == 'profil.php' ? 'active' : ''; ?>" href="/Workshop/profil.php">Profil</a>
-        
-        <?php if ($_SESSION['admin'] == 1): ?>
-            <a class="<?php echo $current_page == 'panneladmin.php' ? 'active' : ''; ?>" href="/Workshop/panneladmin.php">Panel admin 
-                <?php if ($ticket_count > 0 || $reservation_count > 0): ?>
-                    <i class="fa-solid fa-circle-exclamation" style="color:red"></i>
-                <?php endif; ?>
-            </a>
-        <?php endif; ?>
-        <a class="<?php echo $current_page == 'notifications.php' ? 'active' : ''; ?>" href="/Workshop/notifications.php">Mes réservations</a>
-        <a class="<?php echo $current_page == 'logout.php' ? 'active' : ''; ?>" href="/Workshop/logout.php">Se déconnecter</a>
-        
-        <!-- Nouveau bouton pour afficher le statut de réservation -->
-        
-    <?php else: ?>
-        <a class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>" href="login.php">Se connecter</a>
-    <?php endif; ?>
-    </div>
-    </div>
 
-    <h1>Mes Réservations</h1>
+    <h1>Mes réservations</h1>
 
     <table>
         <thead>

@@ -50,7 +50,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     <div class="navbar" id="navbar">
         
     <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
-    <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
+    <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Carte</a>
     <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
     
     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
