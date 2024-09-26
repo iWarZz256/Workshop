@@ -195,7 +195,7 @@ function closeModal() {
     <select id="heure_reservation" name="heure_reservation" required>
         <?php
         // Générer les heures disponibles (par exemple, de 9h à 18h)
-        for ($i = 9; $i <= 18; $i++) {
+        for ($i = 9; $i <= 17; $i++) {
             // Générer l'heure à 00 minutes
             $heure_debut = str_pad($i, 2, '0', STR_PAD_LEFT) . ':00';
             // Vérifier si l'heure de début est déjà réservée
