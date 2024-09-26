@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Présentation de notre site</title>
+    <title>SmartCampus</title>
     <style>
 
         h1 {
@@ -58,7 +58,7 @@
 <body>
 
 <header>
-    <h1>Bienvenue sur le site du Workshop 2024
+    <h1>Bienvenue sur SmartCampus
     </h1>
 </header>
 

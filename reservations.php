@@ -22,7 +22,6 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Réservations</title>
-    <link rel="stylesheet" href="../Styles/styles.css">
     <style>
         /* Style global */
 /* Style global */
@@ -43,7 +42,7 @@ h1 {
 /* Conteneur de la table */
 .table-container {
     margin: auto;
-    max-width: 1000px;
+    max-width: 1300px;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -64,7 +63,7 @@ th, td {
 }
 
 th {
-    background-color: #f8f8f8;
+    background-color: #36b12d;
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -82,9 +81,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
+
 
 button:focus {
     outline: none;

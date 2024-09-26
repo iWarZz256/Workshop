@@ -38,21 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+<div>    
+<div><img src="images/campus.png" class="campus"></div>
     <div class="container">
+    
+        <form action="login.php" method="post">
         <h3><a href="index.php" style="text-decoration: none; color: black; font-size: 20px; margin-bottom: 20px;">
             <i class="fas fa-arrow-left"></i></a></h3><h2>Se connecter</h2>
         <?php if (isset($error)): ?>
             <p class="error-message"><?php echo $error; ?></p>
         <?php endif; ?>
-        <form action="login.php" method="post">
             <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
             <input type="password" id="password" name="password" placeholder="Mot de passe" required>
             <button type="submit">Connexion</button>
+            <a href="inscription.php"> S'inscrire</a>
         </form>
 
-        <a href="inscription.php"> S'inscrire</a>
+       
         
         <footer></footer>
     </div>
+        </div>
 </body>
 </html>

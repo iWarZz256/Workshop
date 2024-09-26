@@ -1,91 +1,98 @@
-
-* {
+/* Styles généraux pour le corps */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Couleur de fond douce */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-body {
-    background-color: #f5f5f5;
+/* Styles pour le conteneur principal */
+h2 {
+    color: #333; /* Couleur du texte */
+    text-align: center;
+}
+
+/* Formulaire d'inscription */
+form {
+    background-color: #fff; /* Fond blanc pour le formulaire */
+    padding: 20px; /* Espacement intérieur */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre portée */
+    width: 300px; /* Largeur fixe */
+}
+
+/* Champs de formulaire */
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%; /* Largeur complète */
+    padding: 10px; /* Espacement intérieur */
+    margin: 10px 0; /* Marges entre les champs */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+    transition: border-color 0.3s; /* Transition douce pour le focus */
+}
+
+/* Couleur de la bordure lors du focus */
+input:focus,
+select:focus {
+    border-color: #007bff; /* Couleur bleue au focus */
+    outline: none; /* Pas de contour */
+}
+
+/* Bouton d'inscription */
+button {
+    width: 100%; /* Largeur complète */
+    padding: 10px; /* Espacement intérieur */
+    margin-top: 10px; /* Marges supérieures */
+    background-color: #007bff; /* Couleur de fond bleue */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en main */
+    transition: background-color 0.3s; /* Transition douce pour le hover */
+}
+
+/* Couleur de fond du bouton lors du hover */
+button:hover {
+    background-color: #0056b3; /* Couleur bleue plus foncée au hover */
+}
+
+/* Lien pour se connecter */
+a {
+    display: block; /* Affiche en bloc */
+    text-align: center; /* Centrer le texte */
+    margin-top: 15px; /* Marges supérieures */
+    text-decoration: none; /* Pas de soulignement */
+    color: #007bff; /* Couleur bleue */
+}
+
+a:hover {
+    text-decoration: underline; /* Soulignement au hover */
+}
+.campus {
+    width: 250px; /* Ajustez cette valeur selon vos besoins */
+    display: block; /* Cela garantit que l'image est traitée comme un bloc pour le centrage */
+    margin: 0 auto; /* Centrer l'image horizontalement */
+}
+.inscription{
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Couleur de fond douce */
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
 
-.container {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    padding: 30px;
-    text-align: center;
 }
-
-h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 14px;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-footer {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #666;
+#inscrit{
+    width: 300px;
+    display: block;
+    margin: 8px;
 }

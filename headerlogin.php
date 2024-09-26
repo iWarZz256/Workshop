@@ -26,7 +26,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon site</title>
+    <title>SmartCampus</title>
     <link rel="stylesheet" type="text/css" href="/Workshop/Styles/notif.css">
     <link rel="stylesheet" type="text/css" href="/Workshop/Styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">

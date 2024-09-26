@@ -9,7 +9,7 @@ body {
 .navbar {
     background-color: #007BFF;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 25px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;  /* Centrer les éléments de la navbar */
@@ -52,12 +52,8 @@ th, td {
 }
 
 th {
-    background-color: #007BFF;
+    background-color: #007bffde;
     color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
 }
 
 tr:hover {
@@ -72,6 +68,9 @@ td:last-child {
     border-bottom: none; /* Supprime la bordure inférieure du dernier td */
 }
 
-td:hover {
-    background-color: #f9f9f9; /* Légère couleur au survol des cellules */
+.validée {
+    background-color: #d4edda; /* Vert clair pour validée */
+}
+.refusée {
+    background-color: #f8d7da; /* Rouge clair pour refusée */
 }

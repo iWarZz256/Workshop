@@ -38,7 +38,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Réservations</title>
+    <title>SmartCampus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="Styles/notif.css">
 </head>
@@ -84,13 +84,13 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php if (count($reservations) > 0): ?>
                 <?php foreach ($reservations as $reservation): ?>
-                    <tr>
+                    <tr class="<?php echo $reservation['statut'] == 1 ? 'validée' : 'refusée'; ?>">
                         <td><?php echo htmlspecialchars($reservation['id']); ?></td>
                         <td><?php echo htmlspecialchars($reservation['numero_salle']); ?></td>
                         <td><?php echo htmlspecialchars($reservation['date_reservation']); ?></td>
-                        <td><?php echo htmlspecialchars($reservation['heure_reservation']); ?></td>
-                        <td><?php echo htmlspecialchars($reservation['duree']); ?></td>
-                        <td><?php echo htmlspecialchars($reservation['statut'] == 1 ? 'Validée' : 'En Attente'); ?></td>
+                        <td><?php echo htmlspecialchars(date('H:i', strtotime($reservation['heure_reservation']))); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['duree']); ?> minutes</td>
+                        <td><?php echo htmlspecialchars($reservation['statut'] == 1 ? 'Validée' : 'Refusée'); ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
