@@ -74,6 +74,7 @@
             <li>Service 1: Possibilités de réservation de salles.</li>
             <li>Service 2: Possibilités de reporter un problème dans une salle.</li>
             <li>Service 3: Possibilités d'administrer entièrement depuis le site.</li>
+            <li>Service 4: Possibilités de création de comptes.</li>
         </ul>
     </section>
 
