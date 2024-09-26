@@ -2,6 +2,7 @@
 session_start();
 require_once '../db.php';
 include '../veriflogin.php';
+include '../headerlogin.php';
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
@@ -39,32 +40,7 @@ $salles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" type="text/css" href="../Styles/mapsnav.css">
 </head>
 <body>
-<div>
-<div class="navbar" style="text-align: center;" id="navbar">
-    <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
-    <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
-    <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
-    
-    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
-        <a class="<?php echo $current_page == 'profil.php' ? 'active' : ''; ?>" href="/Workshop/profil.php">Profil</a>
-        
-        <?php if ($_SESSION['admin'] == 1): ?>
-            <a class="<?php echo $current_page == 'panneladmin.php' ? 'active' : ''; ?>" href="/Workshop/panneladmin.php">Panel admin 
-                <?php if ($ticket_count > 0 || $reservation_count > 0): ?>
-                    <i class="fa-solid fa-circle-exclamation" style="color:red"></i>
-                <?php endif; ?>
-            </a>
-        <?php endif; ?>
-        <a class="<?php echo $current_page == 'notifications.php' ? 'active' : ''; ?>" href="/Workshop/notifications.php">Mes réservations</a>
-        <a class="<?php echo $current_page == 'logout.php' ? 'active' : ''; ?>" href="/Workshop/logout.php">Se déconnecter</a>
-        
-        <!-- Nouveau bouton pour afficher le statut de réservation -->
-        
-    <?php else: ?>
-        <a class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>" href="login.php">Se connecter</a>
-    <?php endif; ?>
-</div>
-    </div>
+
  <div class="navbar" style="text-align: center;" id="navbar1">
         <nav>
             <a class="<?php echo $current_page == 'mapsRDC.php' ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Rez-de-chaussée</a>

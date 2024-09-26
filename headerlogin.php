@@ -45,8 +45,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     </style>
 </head>
 <body>
-<div>
-<div class="navbar" style="text-align: center;" id="navbar">
+<div style="display: flex;">
+    <img src="/Workshop/images/epsi.png" style="width:100px;margin-top:-19px">
+    <div class="navbar" id="navbar">
+        
     <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
     <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
     <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
@@ -55,7 +57,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         <a class="<?php echo $current_page == 'profil.php' ? 'active' : ''; ?>" href="/Workshop/profil.php">Profil</a>
         
         <?php if ($_SESSION['admin'] == 1): ?>
-            <a class="<?php echo $current_page == 'panneladmin.php' ? 'active' : ''; ?>" href="/Workshop/panneladmin.php">Panel admin 
+            <a class="<?php echo ($current_page == 'panneladmin.php' || $current_page == 'ticket.php' || $current_page == 'reservations.php' || $current_page == 'liste_utilisateurs.php') ? 'active' : ''; ?>" href="/Workshop/panneladmin.php">Panel admin 
                 <?php if ($ticket_count > 0 || $reservation_count > 0): ?>
                     <i class="fa-solid fa-circle-exclamation" style="color:red"></i>
                 <?php endif; ?>
@@ -69,7 +71,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     <?php else: ?>
         <a class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>" href="login.php">Se connecter</a>
     <?php endif; ?>
-</div>
+    </div>
     </div>
 <script src="/Workshop/JS/modal.js"></script>
 <script src="/Workshop/JS/script.js"></script>

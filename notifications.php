@@ -43,7 +43,10 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" type="text/css" href="Styles/notif.css">
 </head>
 <body>
+    <div style="display: flex;">
+    <img src="images/epsi.png" style="width:100px;margin-top:-19px">
     <div class="navbar" id="navbar">
+        
     <a class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>" href="/Workshop/index.php">Accueil</a>
     <a class="<?php echo ($current_page == 'mapsRDC.php' || $current_page == 'detailsalle.php') ? 'active' : ''; ?>" href="/Workshop/maps/mapsRDC.php">Maps</a>
     <a class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>" href="/Workshop/contact.php">Contact</a>
@@ -66,6 +69,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
         <a class="<?php echo $current_page == 'login.php' ? 'active' : ''; ?>" href="login.php">Se connecter</a>
     <?php endif; ?>
+    </div>
     </div>
 
     <h1>Mes Réservations</h1>
